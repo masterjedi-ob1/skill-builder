@@ -255,6 +255,19 @@ body {
   background-color: rgba(217, 119, 87, 0.06);
 }
 
+/* Spacing overrides */
+.ob1-btn-primary {
+  margin: 17px;
+}
+
+.ob1-card {
+  margin: 10px;
+}
+
+.ob1-card .p-6 {
+  padding-left: 10px;
+}
+
 /* Gate overlay */
 .ob1-gate-overlay {
   position: fixed;

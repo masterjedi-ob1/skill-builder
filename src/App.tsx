@@ -131,7 +131,7 @@ function App() {
                 </button>
               </div>
 
-              <div className="grid gap-8 lg:grid-cols-2">
+              <div className="grid gap-8 p-[17px] lg:grid-cols-2">
                 {/* Left: Form */}
                 <div className={`${mobileTab === 'preview' ? 'hidden lg:block' : ''}`}>
                   <BuilderForm

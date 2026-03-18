@@ -57,7 +57,7 @@ export function BuilderForm({ formData, onChange, errors }: BuilderFormProps) {
       {/* Preset selector */}
       <div>
         <p className="section-label mb-4" style={{ fontFamily: 'var(--ob1-font-body)' }}>Templates</p>
-        <div className="flex flex-wrap gap-2">
+        <div className="m-[10px] flex flex-wrap gap-2">
           {presets.map((preset) => (
             <button
               key={preset.data.name}
