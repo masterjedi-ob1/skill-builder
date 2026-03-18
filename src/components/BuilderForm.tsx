@@ -56,7 +56,7 @@ export function BuilderForm({ formData, onChange, errors }: BuilderFormProps) {
     <div className="space-y-7">
       {/* Preset selector */}
       <div>
-        <p className="section-label mb-4">Templates</p>
+        <p className="section-label mb-4" style={{ fontFamily: 'var(--ob1-font-body)' }}>Templates</p>
         <div className="flex flex-wrap gap-2">
           {presets.map((preset) => (
             <button
@@ -306,7 +306,7 @@ export function BuilderForm({ formData, onChange, errors }: BuilderFormProps) {
                 placeholder="Show Claude what great output looks like..."
                 rows={5}
                 className="ob1-input resize-y"
-                style={{ fontFamily: 'var(--ob1-font-mono)', fontSize: '13px' }}
+                style={{ fontFamily: 'var(--ob1-font-mono)', fontSize: '13px', fontWeight: 600 }}
               />
             </div>
             <div>
@@ -323,7 +323,7 @@ export function BuilderForm({ formData, onChange, errors }: BuilderFormProps) {
                 placeholder="Show Claude what to avoid..."
                 rows={5}
                 className="ob1-input resize-y"
-                style={{ fontFamily: 'var(--ob1-font-mono)', fontSize: '13px' }}
+                style={{ fontFamily: 'var(--ob1-font-mono)', fontSize: '13px', fontWeight: 600 }}
               />
             </div>
           </div>

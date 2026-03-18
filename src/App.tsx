@@ -8,14 +8,43 @@ import { LearnPanel } from './components/LearnPanel';
 import { BuilderForm } from './components/BuilderForm';
 import { SkillPreview } from './components/SkillPreview';
 import { ExportPanel } from './components/ExportPanel';
+import { EmailGate } from './components/EmailGate';
 import { presets, type SkillFormData } from './lib/presets';
 
+const GATE_KEY = 'ob1_skill_builder_access_v1';
+
+interface GateUser {
+  name: string;
+  email: string;
+  company: string;
+}
+
+function getStoredAccess(): GateUser | null {
+  try {
+    const raw = localStorage.getItem(GATE_KEY);
+    if (!raw) return null;
+    return JSON.parse(raw) as GateUser;
+  } catch {
+    return null;
+  }
+}
+
 function App() {
+  const [gateUser, setGateUser] = useState<GateUser | null>(() => getStoredAccess());
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState<SkillFormData>({ ...presets[0].data });
   const [errors, setErrors] = useState<Record<string, boolean>>({});
   const [mobileTab, setMobileTab] = useState<'form' | 'preview'>('form');
   const buildRef = useRef<HTMLDivElement>(null);
+
+  const handleGateAccess = useCallback((userData: GateUser) => {
+    try {
+      localStorage.setItem(GATE_KEY, JSON.stringify(userData));
+    } catch {
+      // Storage unavailable — still allow access
+    }
+    setGateUser(userData);
+  }, []);
 
   const handleStartBuilding = useCallback(() => {
     setCurrentStep(1);
@@ -58,6 +87,7 @@ function App() {
 
   return (
     <>
+      {!gateUser && <EmailGate onAccess={handleGateAccess} />}
       <BlueprintGrid />
       <Header />
       <StepIndicator currentStep={currentStep} onStepClick={handleStepClick} />
@@ -73,7 +103,7 @@ function App() {
 
         {/* Step 1: Build */}
         {currentStep === 1 && (
-          <div ref={buildRef} className="px-6 pt-6 pb-16 sm:px-8 sm:pt-8">
+          <div ref={buildRef} className="px-5 pt-6 pb-16 sm:px-8 sm:pt-8">
             <div className="mx-auto max-w-6xl">
               {/* Mobile tab switcher */}
               <div className="mb-4 flex gap-2 lg:hidden">

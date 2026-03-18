@@ -82,7 +82,7 @@ export function CodeBlock({ content, filename = 'SKILL.md' }: CodeBlockProps) {
         <span className="inline-block h-3 w-3 rounded-full bg-[#28c840]" />
         <span
           className="ml-3 text-xs text-stone"
-          style={{ fontFamily: 'var(--ob1-font-mono)' }}
+          style={{ fontFamily: 'var(--ob1-font-mono)', fontWeight: 600 }}
         >
           {filename}
         </span>
@@ -90,7 +90,7 @@ export function CodeBlock({ content, filename = 'SKILL.md' }: CodeBlockProps) {
       {/* Code content */}
       <div
         className="max-h-[70vh] overflow-auto bg-navy p-4"
-        style={{ fontFamily: 'var(--ob1-font-mono)', fontSize: '13px', lineHeight: '1.7' }}
+        style={{ fontFamily: 'var(--ob1-font-mono)', fontSize: '13px', lineHeight: '1.7', fontWeight: 600 }}
       >
         <pre className="whitespace-pre-wrap break-words">
           {lines.map((line, i) => (

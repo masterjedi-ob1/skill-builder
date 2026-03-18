@@ -38,38 +38,42 @@ const bestPractices = [
 
 export function LearnPanel() {
   return (
-    <section className="relative z-10 px-6 pb-16">
+    <section className="relative z-10 px-5 pb-14 sm:px-8">
       <div className="mx-auto max-w-5xl">
         {/* Explainer cards */}
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-5 sm:gap-6 md:grid-cols-3">
           {cards.map((card, idx) => {
             const Icon = card.icon;
             return (
               <div
                 key={card.title}
-                className="ob1-card animate-fade-in-up p-6"
+                className="ob1-card animate-fade-in-up p-5 sm:p-6"
                 style={{ animationDelay: `${idx * 80}ms` }}
               >
                 <div className="mb-3 flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-md bg-orange/10">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-orange/10">
                     <Icon size={20} className="text-orange" />
                   </div>
                   <h3
-                    className="text-lg font-bold text-charcoal"
+                    className="text-base font-bold text-charcoal sm:text-lg"
                     style={{ fontFamily: 'var(--ob1-font-heading)' }}
                   >
                     {card.title}
                   </h3>
                 </div>
-                <p className="text-sm leading-relaxed text-charcoal/80">{card.body}</p>
+                <p className="text-sm leading-relaxed text-charcoal/80" style={{ fontFamily: 'var(--ob1-font-body)' }}>
+                  {card.body}
+                </p>
               </div>
             );
           })}
         </div>
 
         {/* Best practices strip */}
-        <div className="mt-12">
-          <p className="section-label mb-6">Best Practices</p>
+        <div className="mt-10 sm:mt-12">
+          <p className="section-label mb-5 sm:mb-6" style={{ fontFamily: 'var(--ob1-font-body)' }}>
+            Best Practices
+          </p>
           <div className="grid gap-4 sm:grid-cols-3">
             {bestPractices.map((bp, idx) => {
               const Icon = bp.icon;
@@ -81,8 +85,12 @@ export function LearnPanel() {
                 >
                   <Icon size={18} className="mt-0.5 shrink-0 text-orange" />
                   <div>
-                    <p className="text-sm font-semibold text-parchment">{bp.label}</p>
-                    <p className="mt-1 text-xs leading-relaxed text-cream/70">{bp.text}</p>
+                    <p className="text-sm font-semibold text-parchment" style={{ fontFamily: 'var(--ob1-font-body)' }}>
+                      {bp.label}
+                    </p>
+                    <p className="mt-1 text-xs leading-relaxed text-cream/70" style={{ fontFamily: 'var(--ob1-font-body)' }}>
+                      {bp.text}
+                    </p>
                   </div>
                 </div>
               );

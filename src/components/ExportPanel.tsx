@@ -26,7 +26,7 @@ export function ExportPanel({ formData }: ExportPanelProps) {
   return (
     <section className="relative z-10 px-6 pb-16">
       <div className="mx-auto max-w-3xl">
-        <p className="section-label mb-6">Export Your Skill</p>
+        <p className="section-label mb-6" style={{ fontFamily: 'var(--ob1-font-body)' }}>Export Your Skill</p>
 
         <div className="grid gap-4 sm:grid-cols-2">
           {/* Copy */}
@@ -84,7 +84,7 @@ export function ExportPanel({ formData }: ExportPanelProps) {
                   Create a folder:{' '}
                   <code
                     className="rounded bg-navy px-2 py-0.5 text-xs text-parchment"
-                    style={{ fontFamily: 'var(--ob1-font-mono)' }}
+                    style={{ fontFamily: 'var(--ob1-font-mono)', fontWeight: 600 }}
                   >
                     skills/{formData.name || 'your-skill-name'}/
                   </code>
@@ -96,7 +96,7 @@ export function ExportPanel({ formData }: ExportPanelProps) {
                   Save this file as{' '}
                   <code
                     className="rounded bg-navy px-2 py-0.5 text-xs text-parchment"
-                    style={{ fontFamily: 'var(--ob1-font-mono)' }}
+                    style={{ fontFamily: 'var(--ob1-font-mono)', fontWeight: 600 }}
                   >
                     SKILL.md
                   </code>{' '}

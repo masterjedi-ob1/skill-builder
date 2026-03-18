@@ -14,9 +14,9 @@
   --ob1-parchment: #F5F0E8;
   --ob1-cream: #E8DFD0;
   --ob1-white: #FFFFFF;
-  --ob1-font-heading: 'Inter', 'Calibri', system-ui, sans-serif;
-  --ob1-font-body: 'Inter', 'Calibri', system-ui, sans-serif;
-  --ob1-font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  --ob1-font-heading: 'Playfair Display', 'Georgia', serif;
+  --ob1-font-body: 'Source Sans 3', 'Calibri', system-ui, sans-serif;
+  --ob1-font-mono: 'IBM Plex Mono', 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
   --ob1-radius: 6px;
   --ob1-shadow: 0 2px 8px rgba(13, 27, 42, 0.15);
   --ob1-border-accent: 3px solid var(--ob1-orange);
@@ -34,9 +34,9 @@
   --color-stone: #8B8178;
   --color-parchment: #F5F0E8;
   --color-cream: #E8DFD0;
-  --font-heading: 'Inter', 'Calibri', system-ui, sans-serif;
-  --font-body: 'Inter', 'Calibri', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  --font-heading: 'Playfair Display', 'Georgia', serif;
+  --font-body: 'Source Sans 3', 'Calibri', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
 }
 
 *,
@@ -201,4 +201,76 @@ body {
 
 .animate-row-in {
   animation: rowIn 200ms ease-out forwards;
+}
+
+/* Buttons */
+.ob1-btn-primary {
+  background-color: var(--ob1-orange);
+  color: #ffffff;
+  font-weight: 700;
+  border: none;
+  border-radius: var(--ob1-radius);
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-family: var(--ob1-font-body);
+  letter-spacing: 0.02em;
+  transition: background-color 200ms ease, transform 100ms ease, box-shadow 200ms ease;
+  box-shadow: 0 2px 8px rgba(217, 119, 87, 0.3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+}
+
+.ob1-btn-primary:hover {
+  background-color: var(--ob1-amber);
+  box-shadow: 0 4px 16px rgba(217, 119, 87, 0.4);
+}
+
+.ob1-btn-primary:active {
+  transform: translateY(1px);
+}
+
+.ob1-btn-outline {
+  background-color: transparent;
+  color: var(--ob1-parchment);
+  font-weight: 600;
+  border: 1.5px solid var(--ob1-line);
+  border-radius: var(--ob1-radius);
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  font-family: var(--ob1-font-body);
+  transition: border-color 200ms ease, color 200ms ease, background-color 200ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 36px;
+}
+
+.ob1-btn-outline:hover {
+  border-color: var(--ob1-orange);
+  color: var(--ob1-orange);
+  background-color: rgba(217, 119, 87, 0.06);
+}
+
+/* Gate overlay */
+.ob1-gate-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: var(--ob1-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+/* Mobile improvements */
+@media (max-width: 640px) {
+  .ob1-input {
+    font-size: 16px; /* Prevent iOS zoom */
+  }
 }
