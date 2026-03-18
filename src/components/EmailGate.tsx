@@ -25,10 +25,19 @@ export function EmailGate({ onAccess }: EmailGateProps) {
     e.preventDefault();
     if (!validate()) return;
     setLoading(true);
-    // Simulate brief async (could POST to webhook here)
+    const userData = { name: name.trim(), email: email.trim(), company: company.trim() };
+
+    // POST to LeadConnector via serverless function (fire and forget)
+    fetch('/api/capture-lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(userData),
+    }).catch((err) => console.warn('Lead capture failed:', err));
+
+    // Grant access immediately (don't block on API response)
     setTimeout(() => {
-      onAccess({ name: name.trim(), email: email.trim(), company: company.trim() });
-    }, 600);
+      onAccess(userData);
+    }, 400);
   }
 
   return (
