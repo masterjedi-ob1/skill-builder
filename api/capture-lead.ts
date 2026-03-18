@@ -1,7 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
-const LC_BASE_URL = 'https://services.leadconnectorhq.com';
-const LC_API_VERSION = '2021-07-28';
+const LC_BASE_URL = 'https://rest.gohighlevel.com/v1';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // CORS headers for the SPA
@@ -65,7 +64,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     lastName,
     email,
     companyName: company,
-    locationId: LC_LOCATION_ID,
     source: 'Skill Builder - skills.ob1ai.co',
   };
 
@@ -77,7 +75,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${LC_API_KEY}`,
-        Version: LC_API_VERSION,
       },
       body: JSON.stringify(contactPayload),
     });
@@ -106,8 +103,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${LC_API_KEY}`,
-          Version: LC_API_VERSION,
-        },
+          },
         body: JSON.stringify({ tags }),
       }).catch((e) => console.warn('[LC] Tag assignment failed:', e));
     }
